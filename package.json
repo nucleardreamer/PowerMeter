@@ -1,0 +1,23 @@
+{
+  "name": "PowerMeter",
+  "version": "0.0.1",
+  "description": "A power meter",
+  "main": "app.js",
+  "scripts": {
+    "test": "true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nucleardreamer/PowerMeter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nucleardreamer/PowerMeter/issues"
+  },
+  "author": "Flynn Joffray, Cole Purbaugh",
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "homepage": "https://github.com/nucleardreamer/PowerMeter"
+}
