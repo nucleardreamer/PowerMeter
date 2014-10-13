@@ -1,5 +1,5 @@
 module.exports = function(app){
 	app.get('/ping', function(req, res){
-		res.send(200);
+		res.status(200).end()
 	});
 }
