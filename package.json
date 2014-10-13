@@ -19,5 +19,9 @@
       "type": "MIT"
     }
   ],
-  "homepage": "https://github.com/nucleardreamer/PowerMeter"
+  "homepage": "https://github.com/nucleardreamer/PowerMeter",
+  "dependencies": {
+    "express": "4.9.x",
+    "jade": "1.7.x"
+  }
 }
