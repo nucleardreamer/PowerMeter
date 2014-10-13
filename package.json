@@ -22,6 +22,7 @@
   "homepage": "https://github.com/nucleardreamer/PowerMeter",
   "dependencies": {
     "express": "4.9.x",
-    "jade": "1.7.x"
+    "jade": "1.7.x",
+    "newrelic": "^1.12.0"
   }
 }
