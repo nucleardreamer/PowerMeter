@@ -10,10 +10,6 @@ router.get('/', function(req, res) {
 	res.render('index', { title: 'Power Meter' });
 });
 
-router.get('/wind', function(req, res){
-
-});
-
 router.put('/node', function(req, res){
 	console.log('req', req.body, req.params);
 
@@ -31,8 +27,19 @@ router.put('/node', function(req, res){
 
 });
 
-router.get('/node', function(req, res){
-	res.status(200).json(incomingResults);
+router.get('/node/:lastNum', function(req, res){
+	var lastNum = parseInt(req.params.lastNum);
+	if(lastNum == 0){
+		res.status(200).json(incomingResults);
+	} else {
+		var incomingResultsLimited = _.cloneDeep(incomingResults);
+		_.forEach(incomingResultsLimited, function(item, k){
+			console.log('item', item, k)
+			incomingResultsLimited[k].readings = _.last(incomingResultsLimited[k].readings, lastNum);
+		});
+		res.status(200).json(incomingResultsLimited);
+	}
+
 });
 
 router.get('/ping', function(req, res){
