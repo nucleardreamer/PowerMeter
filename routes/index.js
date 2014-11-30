@@ -28,7 +28,7 @@ router.put('/node', function(req, res){
 
 });
 
-router.get('/node/readings', function(req, res){
+router.get('/node', function(req, res){
 	res.status(200).json(incomingResults);
 });
 
