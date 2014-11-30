@@ -44,7 +44,7 @@ app.controller('readingsController', function ($scope, $http) {
 
                 _.forEach(data, function(item, k){
                     if(_.isUndefined(chartData[k])){
-                        chartData[k] = [];
+                        chartData[k] = {data:[]};
                     } else {
                         var mapped = _.map(item.readings, function(i){
                             return i.data;
