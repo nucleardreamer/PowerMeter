@@ -38,7 +38,7 @@ app.controller('readingsController', function ($scope, $http) {
     var chartData = $scope.chartConfig.series;
 
     var pullReadingData = function(){
-        $http.get('/node/10')
+        $http.get('/node/500')
             .success(function(data, status){
                 $scope.data = data;
 
