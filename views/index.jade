@@ -4,7 +4,7 @@ block content
   h1= title
   p Power meter readings
   div(id="windChart", ng-controller="readingsController")
-    //highchart(id="chart", config="chartConfig")
+    highchart(id="chart", config="chartConfig")
     div(ng-repeat="(key,val) in data")
       h2 {{key}}
       ul(ng-repeat="reading in val.readings")

@@ -12,7 +12,7 @@ app.controller('readingsController', function ($scope, $http) {
             }
         },
         series: [{
-            data: [10, 15, 12, 8, 7]
+            data: []
         }],
         xAxis: {
             type: 'datetime',
@@ -35,13 +35,26 @@ app.controller('readingsController', function ($scope, $http) {
         loading: false
     };
 
-    var chartData = $scope.chartConfig.series[0].data;
+    var chartData = $scope.chartConfig.series;
 
     var pullReadingData = function(){
         $http.get('/node/10')
             .success(function(data, status){
                 $scope.data = data;
-                chartData.push(Math.random())
+
+                _.forEach(data, function(item, k){
+                    if(_.isUndefined(chartData[k])){
+                        chartData[k] = [];
+                    } else {
+                        var mapped = _.map(item.readings, function(i){
+                            return i.data;
+                        })
+                        console.log(item.readings, mapped);
+                        chartData[k].data = mapped;
+                        console.log($scope.chartConfig.series[k].data);
+                    }
+                });
+
             })
             .error(function(data, status){
                 console.error(data, status)
