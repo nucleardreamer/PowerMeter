@@ -29,7 +29,7 @@ app.controller('readingsController', function ($scope, $http) {
             }]
         },
         title: {
-            text: 'Wind '
+            text: 'Temperature Live Raw Values'
         },
         //xAxis: {currentMin: 0, currentMax: 10, minRange: 1},
         loading: false
