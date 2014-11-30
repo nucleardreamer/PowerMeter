@@ -15,7 +15,10 @@ router.get('/wind', function(req, res){
 });
 
 router.put('/node', function(req, res){
+	console.log('req', req.body, req.params);
+	
 	var data = JSON.parse(req.body);
+
 	console.log(data);
 	if(_.isUndefined(incomingResults[data.nodeNumber])){
 		incomingResults[data.nodeNumber] = {
