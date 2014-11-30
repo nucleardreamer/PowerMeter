@@ -1,7 +1,9 @@
 doctype html
-html
+html(ng-app="windPower")
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js')
+    script(src='/javascripts/app.js')
   body
     block content

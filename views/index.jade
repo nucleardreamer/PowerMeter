@@ -2,4 +2,10 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p Power meter readings
+  div(ng-controller="readingsController")
+    div(ng-repeat="(key,val) in data")
+      h2 {{key}}
+      ul(ng-repeat="reading in val.readings")
+        li {{reading.time}} - {{reading.data}}
+
