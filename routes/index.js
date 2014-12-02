@@ -21,6 +21,9 @@ router.put('/node', function(req, res){
 			readings: []
 		}
 	}
+	if(incomingResults[data.nodeNumber].readings.length >= 500){
+		incomingResults[data.nodeNumber].readings = _.last(incomingResults[data.nodeNumber].readings, 499)
+	}
 	incomingResults[data.nodeNumber].readings.push(data.reading);
 
 	res.status(200).end();
