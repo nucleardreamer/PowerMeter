@@ -48,7 +48,7 @@ app.controller('windReadingsController', function ($scope, $http) {
             }
         },
         title: {
-            text: 'Wind Live Values'
+            text: 'Wind Power Values'
         },
         loading: false
     };
@@ -116,7 +116,7 @@ app.controller('readingsController', function ($scope, $http) {
             }]
         },
         title: {
-            text: 'Temperature Live Raw Values'
+            text: 'Node Energy Raw Values'
         },
         //xAxis: {currentMin: 0, currentMax: 10, minRange: 1},
         loading: false
