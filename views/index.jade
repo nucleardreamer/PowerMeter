@@ -3,6 +3,9 @@ extends layout
 block content
   h1= title
   p Power meter readings
+  div(id="windChart", ng-controller="windReadingsController")
+    highchart(id="chart", config="chartConfig")
+
   div(id="windChart", ng-controller="readingsController")
     highchart(id="chart", config="chartConfig")
     div(ng-repeat="(key,val) in data")

@@ -9,8 +9,6 @@ var express = require('express'),
 
 var routes = require('./routes/index');
 
-var wind = require(path.join('lib', 'wind_scrape'));
-
 var app = express();
 
 // view engine setup
