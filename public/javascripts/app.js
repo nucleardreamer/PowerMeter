@@ -116,7 +116,7 @@ app.controller('readingsController', function ($scope, $http) {
             }]
         },
         title: {
-            text: 'Node Energy Raw Values'
+            text: 'Node Power Values'
         },
         //xAxis: {currentMin: 0, currentMax: 10, minRange: 1},
         loading: false
