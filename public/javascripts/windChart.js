@@ -20,7 +20,7 @@ Wind.prototype.init = function(){
             text: 'wind power readings ('+moment().format('MMM DD, YYYY').toString()+')'
         },
         subtitle: {
-            text: 'updated at five minute intervals'
+            text: 'last 24 hours, updated at five minute intervals'
         },
         xAxis: {
             type: 'datetime',
@@ -30,8 +30,8 @@ Wind.prototype.init = function(){
             title: {
                 text: 'Date'
             },
-            min: moment().startOf('day').unix() * 1000,
-            max: moment().endOf('day').unix() * 1000,
+            min: moment().hours(-24).unix() * 1000,
+            max: moment().unix() * 1000,
         },
         yAxis: {
             title: {
