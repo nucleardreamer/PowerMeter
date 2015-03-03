@@ -19,6 +19,9 @@ var io = new Io(server, wind);
 var Nodes = require(path.join(__dirname,'lib','nodes'));
 var nodes = new Nodes();
 
+var Cron = require(path.join(__dirname,'lib','cron'));
+var cron = new Cron(wind, io, nodes);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

@@ -31,7 +31,7 @@ Wind.prototype.init = function(){
                 text: 'Date'
             },
             min: moment().hours(-24).unix() * 1000,
-            max: moment().unix() * 1000,
+            max: moment().unix() * 1000
         },
         yAxis: {
             title: {

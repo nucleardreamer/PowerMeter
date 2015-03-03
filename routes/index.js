@@ -29,6 +29,16 @@ module.exports = function(app, wind, nodes, io) {
         }
     });
 
+    app.get('/api/refreshWindReadings', function (req, res) {
+        if (wind.ready) {
+            wind.getWindData(function (data) {
+                res.json(data);
+            })
+        } else {
+            res.send(500);
+        }
+    });
+
     app.get('/api/getLastWindReading', function (req, res) {
         if (wind.ready) {
             wind.getLastReading(function (data) {
