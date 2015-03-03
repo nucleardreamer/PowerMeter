@@ -10,7 +10,7 @@ Highcharts.setOptions({
     }
 });
 
-(function(){
+(function($){
 
     socket.on('connection', function (data) {
 
@@ -35,7 +35,11 @@ Highcharts.setOptions({
         })
 
     }).on('disconnect', function(){
+        $('.disconnected').addClass('false');
         console.log('disconnect', arguments)
+    }).on('reconnect', function(){
+        $('.disconnected').removeClass('false');
+        console.log('reconnect', arguments)
     })
 
 })(jQuery);
