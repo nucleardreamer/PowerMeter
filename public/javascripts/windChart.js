@@ -61,7 +61,7 @@ Wind.prototype.init = function(){
             pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
             '<td style="text-align: right"><b>{point.y}</b></td></tr>',
             footerFormat: '</table>',
-            valueDecimals: 2,
+            valueDecimals: 0,
             crosshairs: [true, false]
         },
 

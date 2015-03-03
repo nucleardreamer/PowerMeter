@@ -33,15 +33,21 @@ Highcharts.setOptions({
         var nodeChart = new charts.node('#nodeChart');
 
         socket.emit('getNodeData', function(data){
-            console.log('getNodeData', data)
+            console.log('getNodeData', data);
             nodeChart.updateChart(data);
         });
 
         socket.on('nodeData', function(data){
-            console.log('NODE VALUE')
+            console.log('NODE VALUE');
             console.log(arguments);
             nodeChart.updateOneValue(data);
         });
+
+        socket.on('nodeDataAdded', function(){
+            console.log('NEW NODE ADDED');
+            location.reload();
+        });
+
 
     }).on('disconnect', function(){
         $('.disconnected').addClass('false');

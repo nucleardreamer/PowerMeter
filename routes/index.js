@@ -75,7 +75,11 @@ module.exports = function(app, wind, nodes, io) {
             if(err){
                 res.status(500).end();
             } else {
-                io.emit('nodeData', data);
+                if(data.newNode){
+                    io.emit('nodeDataAdded', {});
+                } else {
+                    io.emit('nodeData', data);
+                }
                 res.status(200).end();
             }
         });
