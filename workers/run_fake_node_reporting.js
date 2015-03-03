@@ -33,11 +33,14 @@ var nodeInterval = function(nodeValue, dataValue){
     });
 };
 
-var int = setInterval(function(){
+var int = function(){
 
     nodeInterval('0', getRandomInt(10,15));
-    //nodeInterval('1', getRandomInt(20,35));
-}, 1000);
+    nodeInterval('1', getRandomInt(20,35));
+    setTimeout(int, 2000)
+};
+
+int();
 
 //var int = setInterval(function(){
 //
