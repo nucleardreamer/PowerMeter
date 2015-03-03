@@ -1,0 +1,25 @@
+extends layout
+
+block headAbove
+    script(src='/socket.io/socket.io.js')
+
+block headBelow
+    script(src='/javascripts/app.js')
+    script(src='/javascripts/windChart.js')
+    script(src='/javascripts/nodeChart.js')
+
+block content
+    .header
+        .container
+            .row
+                .col-sm-12
+                    h1 POWER METER
+    .container
+        .row
+            .col-sm-12
+                div(id="windChart")
+    br
+    .container
+        .row
+            .col-sm-12
+                div(id="nodeChart")

@@ -1,4 +1,6 @@
 require('newrelic');
+var event = require('events');
+var ee = new event.EventEmitter();
 
 var express = require('express'),
     path = require('path'),
@@ -7,9 +9,15 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var _wind = require(path.join(__dirname,'lib','wind_scrape'));
+var wind = new _wind();
+
+var routes = require('./routes/index')(ee, wind);
 
 var app = express();
+var server = require('http').Server(app);
+
+var io = require(path.join(__dirname,'lib','io'))(server, wind, ee);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -57,5 +65,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
+var debug = require('debug')('power-meter');
 
-module.exports = app;
+server.listen(process.env.PORT || 8000, function() {
+    debug('Express server listening on port ' + (process.env.PORT || 8000));
+});
+

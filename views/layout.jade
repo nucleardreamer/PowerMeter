@@ -1,14 +1,19 @@
 doctype html
-html(ng-app="windPower")
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js')
-    script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js')
-    script(src='/javascripts/app.js')
-    script(src='http://code.highcharts.com/highcharts.js')
-    script(src='/javascripts/highcharts-ng.min.js')
-    script(src='/javascripts/moment.min.js')
-  body
-    block content
+html
+    head
+        block headAbove
+        title= title
+        script(src='/ext/lodash/lodash.min.js')
+        script(src='/ext/jquery/dist/jquery.min.js')
+        //script(src='/ext/highcharts/highcharts.js')
+        //script(src='http://code.highcharts.com/stock/highstock.js')
+        script(src='/javascripts/highstock.js')
+        script(src='/javascripts/hctheme.js')
+        script(src='/ext/moment/min/moment.min.js')
+        script(src='/ext/moment-timezone/builds/moment-timezone-with-data.min.js')
+        link(href='/ext/bootstrap/dist/css/bootstrap.min.css',rel='stylesheet')
+        link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600', rel='stylesheet', type='text/css')
+        link(href='/stylesheets/style.css', rel='stylesheet')
+        block headBelow
+    body
+        block content

@@ -1,15 +1,19 @@
 extends layout
 
+block headAbove
+  script(src='/socket.io/socket.io.js')
+
 block content
   h1= title
-  p Power meter readings
-  div(id="windChart", ng-controller="windReadingsController")
-    highchart(id="chart", config="chartConfig")
-
-  div(id="windChart", ng-controller="readingsController")
-    highchart(id="chart", config="chartConfig")
-    div(ng-repeat="(key,val) in data")
-      h2 {{key}}
-      ul(ng-repeat="reading in val.readings")
-        li {{reading.time}} - {{reading.data}}
-
+  a(href="/dashboard") Dashboard
+  //p Power meter readings
+  //div(id="windChart", ng-controller="windReadingsController")
+  //  highchart(id="chart", config="chartConfig")
+  //
+  //div(id="windChart", ng-controller="readingsController")
+  //  highchart(id="chart", config="chartConfig")
+  //  div(ng-repeat="(key,val) in data")
+  //    h2 {{key}}
+  //    ul(ng-repeat="reading in val.readings")
+  //      li {{reading.time}} - {{reading.data}}
+  //
