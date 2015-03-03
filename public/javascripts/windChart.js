@@ -10,7 +10,6 @@ Wind.prototype.init = function(){
     _this.chart = new Highcharts.Chart({
         chart: {
             renderTo: _this.container.replace('#',''),
-            type: 'spline',
             zoomType: 'x'
         },
         credits: {
@@ -22,7 +21,7 @@ Wind.prototype.init = function(){
         subtitle: {
             text: 'last 24 hours, updated at five minute intervals'
         },
-        xAxis: {
+        xAxis: [{
             type: 'datetime',
             dateTimeLabelFormats: {
                 hour: '%I:%M%p'
@@ -32,19 +31,35 @@ Wind.prototype.init = function(){
             },
             min: moment().hours(-24).unix() * 1000,
             max: moment().unix() * 1000
-        },
-        yAxis: {
-            title: {
-                text: 'Power (MW)'
+        }],
+        yAxis: [
+            {
+                title: {
+                    text: 'Power'
+                },
+                labels: {
+                    format: '{value} MW'
+                },
+                min: 0
             },
-            min: 0
-        },
+            {
+                title: {
+                    text: null
+                },
+                labels: {
+                    enabled: false
+                },
+                min: 0,
+                max: 1,
+                ceiling: 1
+            }
+        ],
         tooltip: {
             shared: true,
             useHTML: true,
             headerFormat: '<small>{point.key}</small><table>',
             pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
-            '<td style="text-align: right"><b>{point.y} MW</b></td></tr>',
+            '<td style="text-align: right"><b>{point.y}</b></td></tr>',
             footerFormat: '</table>',
             valueDecimals: 2,
             crosshairs: [true, false]
@@ -55,13 +70,31 @@ Wind.prototype.init = function(){
                 marker: {
                     enabled: false
                 }
+            },
+            series: {
+                borderWidth: 0
             }
         },
         series: [{
             name: 'Base Power',
+            type: 'spline',
+            yAxis: 0,
+            tooltip: {
+                valueSuffix: ' MW'
+            },
             data: []
         }, {
             name: 'Wind Power',
+            type: 'spline',
+            yAxis: 0,
+            tooltip: {
+                valueSuffix: ' MW'
+            },
+            data: []
+        },{
+            name: 'Wind Power Exceeded Event',
+            type: 'column',
+            yAxis: 1,
             data: []
         }]
     })
@@ -71,11 +104,18 @@ Wind.prototype.init = function(){
 Wind.prototype.updateChart = function(data){
     var _this = this, baseVal = [], windVal = [];
     _.forEach(data, function(item, k){
-        windVal.push([item.date * 1000, parseInt(item.wind)]);
-        baseVal.push([item.date * 1000, parseInt(item.basePt)]);
+        windVal.push([item.date * 1000, item.wind]);
+        baseVal.push([item.date * 1000, item.basePt]);
     });
     _this.chart.series[0].setData(baseVal);
     _this.chart.series[1].setData(windVal);
+};
+Wind.prototype.updateChartExcess = function(data){
+    var _this = this, excess = [];
+    _.forEach(data, function(item, k){
+        excess.push([item.date * 1000, 1]);
+    });
+    _this.chart.series[2].setData(excess);
 };
 
 charts.wind = Wind;

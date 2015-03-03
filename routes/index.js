@@ -19,6 +19,16 @@ module.exports = function(app, wind, nodes, io) {
 
     });
 
+    app.get('/api/getExcessWindReadings', function (req, res) {
+        if (wind.ready) {
+            wind.getExcessEvents(function (data) {
+                res.json(data);
+            })
+        } else {
+            res.send(500);
+        }
+    });
+
     app.get('/api/getAllWindReadings', function (req, res) {
         if (wind.ready) {
             wind.getWindData(function (data) {

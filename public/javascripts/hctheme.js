@@ -6,12 +6,12 @@ Highcharts.createElement('link', {
 }, null, document.getElementsByTagName('head')[0]);
 
 Highcharts.theme = {
-    colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-        "#55BF3B", "#DF5353", "#7798BF", "#aaeeee"],
+    colors: ["#2b908f", "#90ee7e", "#55BF3B", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
+        "#f45b5b", "#DF5353", "#7798BF", "#aaeeee"],
     chart: {
         backgroundColor: '#2a2a2b',
         style: {
-            fontFamily: "'Unica One', sans-serif"
+            fontFamily: "'Source Sans Pro', sans-serif"
         },
         plotBorderColor: '#606063'
     },
@@ -46,7 +46,7 @@ Highcharts.theme = {
         }
     },
     yAxis: {
-        gridLineColor: '#707073',
+        gridLineCoborderWidthor: '#707073',
         labels: {
             style: {
                 color: '#E0E0E3'
