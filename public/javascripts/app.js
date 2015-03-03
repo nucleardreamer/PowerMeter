@@ -26,6 +26,10 @@ Highcharts.setOptions({
             windChart.updateChartExcess(data);
         });
 
+        socket.emit('getWindDeficitEvents', function(data){
+            windChart.updateChartDeficit(data);
+        });
+
         var nodeChart = new charts.node('#nodeChart');
 
         socket.emit('getNodeData', function(data){

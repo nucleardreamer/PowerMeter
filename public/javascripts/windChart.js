@@ -92,7 +92,12 @@ Wind.prototype.init = function(){
             },
             data: []
         },{
-            name: 'Wind Power Exceeded Event',
+            name: 'Wind Power Excess Event',
+            type: 'column',
+            yAxis: 1,
+            data: []
+        },{
+            name: 'Wind Power Deficit Event',
             type: 'column',
             yAxis: 1,
             data: []
@@ -116,6 +121,13 @@ Wind.prototype.updateChartExcess = function(data){
         excess.push([item.date * 1000, 1]);
     });
     _this.chart.series[2].setData(excess);
+};
+Wind.prototype.updateChartDeficit = function(data){
+    var _this = this, deficit = [];
+    _.forEach(data, function(item, k){
+        deficit.push([item.date * 1000, 1]);
+    });
+    _this.chart.series[3].setData(deficit);
 };
 
 charts.wind = Wind;

@@ -6,8 +6,8 @@ Highcharts.createElement('link', {
 }, null, document.getElementsByTagName('head')[0]);
 
 Highcharts.theme = {
-    colors: ["#2b908f", "#90ee7e", "#55BF3B", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
-        "#f45b5b", "#DF5353", "#7798BF", "#aaeeee"],
+    colors: ["#2b908f", "#90ee7e", "#55BF3B", "#f45b5b", "#aaeeee", "#ff0066", "#eeaaee",
+        "#7798BF", "#DF5353", "#7798BF", "#aaeeee"],
     chart: {
         backgroundColor: '#2a2a2b',
         style: {
