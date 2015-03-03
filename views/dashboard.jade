@@ -17,10 +17,23 @@ block content
                     p POWER METERS
     .container
         .row
+            .col-sm-12.status
+                - var isUp = parseInt(lastReading.wind) >= parseInt(lastReading.basePt)
+                p Wind production is currently&nbsp;
+                    if isUp
+                        span.green #{parseInt(lastReading.wind) - parseInt(lastReading.basePt)} MW&nbsp;
+                        | Positive
+                    else
+                        span.red #{parseInt(lastReading.basePt) - parseInt(lastReading.wind)} MW&nbsp;
+                        | Negative
+        .row
             .col-sm-12
                 div(id="windChart")
     br
     .container
+        .row
+            .col-sm-12.status
+                p home power device report
         .row
             .col-sm-12
                 div(id="nodeChart")

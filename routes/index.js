@@ -10,9 +10,13 @@ module.exports = function(app, wind, nodes, io) {
         });
     });
     app.get('/dashboard', function (req, res) {
-        res.render('dashboard', {
-            title: 'Node Hive'
-        });
+        wind.getLastReading(function (data) {
+            res.render('dashboard', {
+                title: 'Node Hive',
+                lastReading: data
+            });
+        })
+
     });
 
     app.get('/api/getAllWindReadings', function (req, res) {

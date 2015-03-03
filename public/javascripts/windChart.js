@@ -47,7 +47,7 @@ Wind.prototype.init = function(){
             '<td style="text-align: right"><b>{point.y} MW</b></td></tr>',
             footerFormat: '</table>',
             valueDecimals: 2,
-            crosshairs: [true, true]
+            crosshairs: [true, false]
         },
 
         plotOptions: {
