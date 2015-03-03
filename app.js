@@ -1,8 +1,5 @@
 process.env.TZ = 'America/Los_Angeles';
-
 require('newrelic');
-var event = require('events');
-var ee = new event.EventEmitter();
 
 var express = require('express'),
     path = require('path'),
@@ -11,15 +8,17 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser');
 
-var _wind = require(path.join(__dirname,'lib','wind_scrape'));
-var wind = new _wind();
-
-var routes = require('./routes/index')(ee, wind);
-
 var app = express();
 var server = require('http').Server(app);
 
-var io = require(path.join(__dirname,'lib','io'))(server, wind, ee);
+var Wind = require(path.join(__dirname,'lib','wind_scrape'));
+var wind = new Wind();
+
+var Io = require(path.join(__dirname,'lib','io'));
+var io = new Io(server, wind);
+
+var Nodes = require(path.join(__dirname,'lib','nodes'));
+var nodes = new Nodes();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +33,7 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+var routes = require(path.join(__dirname, 'routes', 'index'))(app, wind, nodes, io);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

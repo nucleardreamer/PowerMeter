@@ -29,11 +29,11 @@ Highcharts.setOptions({
             nodeChart.updateChart(data);
         });
 
-        socket.on('nodeValue', function(data){
+        socket.on('nodeData', function(data){
             console.log('NODE VALUE')
             console.log(arguments);
             nodeChart.updateOneValue(data);
-        })
+        });
 
     }).on('disconnect', function(){
         $('.disconnected').addClass('false');
