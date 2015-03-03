@@ -3,9 +3,9 @@ var _ = require('lodash');
 var router = express.Router();
 var path = require('path');
 
-var incomingResults = {};
-
 module.exports = function(ee, wind) {
+
+    var incomingResults = {};
 
     router.get('/', function (req, res) {
         res.render('index', {
@@ -69,14 +69,18 @@ module.exports = function(ee, wind) {
     router.get('/api/node/:lastNum', function (req, res) {
         var lastNum = parseInt(req.params.lastNum);
         if (lastNum == 0) {
-            res.status(200).json(incomingResults);
+            res.json(incomingResults || {});
         } else {
-            var incomingResultsLimited = _.cloneDeep(incomingResults);
-            _.forEach(incomingResultsLimited, function (item, k) {
-                console.log('item', item, k);
-                incomingResultsLimited[k].readings = _.last(incomingResultsLimited[k].readings, lastNum);
-            });
-            res.status(200).json(incomingResultsLimited);
+            if(incomingResults.length) {
+                var incomingResultsLimited = _.cloneDeep(incomingResults || {});
+                _.forEach(incomingResultsLimited, function (item, k) {
+                    console.log('item', item, k);
+                    incomingResultsLimited[k].readings = _.last(incomingResultsLimited[k].readings, lastNum);
+                });
+                res.status(200).json(incomingResultsLimited);
+            } else {
+                res.json({})
+            }
         }
 
     });
