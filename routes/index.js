@@ -52,7 +52,10 @@ module.exports = function(ee, wind) {
         if (incomingResults[data.nodeNumber].readings.length >= 500) {
             incomingResults[data.nodeNumber].readings = _.last(incomingResults[data.nodeNumber].readings, 499)
         }
+
         incomingResults[data.nodeNumber].readings.push(data.reading);
+
+        console.log('NODE DATA READINGS:', data.nodeNumber,incomingResults[data.nodeNumber].readings.length);
 
         ee.emit('nodeReport', {
             node: data.nodeNumber,

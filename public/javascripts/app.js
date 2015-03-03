@@ -25,6 +25,7 @@ Highcharts.setOptions({
         var nodeChart = new charts.node('#nodeChart');
 
         socket.emit('getNodeData', function(data){
+            console.log('getNodeData', data)
             nodeChart.updateChart(data);
         });
 
