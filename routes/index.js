@@ -67,17 +67,18 @@ module.exports = function(ee, wind) {
     });
 
     router.get('/api/node/:lastNum', function (req, res) {
+        console.log('incomingResults:', incomingResults.length)
         var lastNum = parseInt(req.params.lastNum);
         if (lastNum == 0) {
             res.json(incomingResults || {});
         } else {
             if(incomingResults.length) {
-                var incomingResultsLimited = _.cloneDeep(incomingResults || {});
+                var incomingResultsLimited = _.cloneDeep(incomingResults);
                 _.forEach(incomingResultsLimited, function (item, k) {
                     console.log('item', item, k);
                     incomingResultsLimited[k].readings = _.last(incomingResultsLimited[k].readings, lastNum);
                 });
-                res.status(200).json(incomingResultsLimited);
+                res.json(incomingResultsLimited);
             } else {
                 res.json({})
             }
