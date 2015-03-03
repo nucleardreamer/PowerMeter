@@ -1,11 +1,23 @@
 extends layout
 
 block headAbove
-  script(src='/socket.io/socket.io.js')
+    script(src='/socket.io/socket.io.js')
 
 block content
-  h1= title
-  a(href="/dashboard") Dashboard
+    .header
+        .container
+            .row
+                .col-sm-12
+                    div.img.logo
+                        img(src="/img/logo.png")
+                    h1= title
+                    p The Smart Grid Residential Load Balancer
+    .container
+        .row
+            .col-sm-12
+                .links
+                    h2
+                        a(href="/dashboard") Demo Page
   //p Power meter readings
   //div(id="windChart", ng-controller="windReadingsController")
   //  highchart(id="chart", config="chartConfig")

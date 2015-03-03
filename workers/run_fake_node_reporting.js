@@ -36,5 +36,11 @@ var nodeInterval = function(nodeValue, dataValue){
 var int = setInterval(function(){
 
     nodeInterval('0', getRandomInt(10,15));
-
+    nodeInterval('1', getRandomInt(20,35));
 }, 1000);
+
+var int = setInterval(function(){
+
+    nodeInterval('3', getRandomInt(1,15));
+
+}, 300);

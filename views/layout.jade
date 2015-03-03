@@ -3,6 +3,7 @@ html
     head
         block headAbove
         title= title
+        include includes/favicon
         script(src='/ext/lodash/lodash.min.js')
         script(src='/ext/jquery/dist/jquery.min.js')
         //script(src='/ext/highcharts/highcharts.js')
@@ -12,7 +13,7 @@ html
         script(src='/ext/moment/min/moment.min.js')
         script(src='/ext/moment-timezone/builds/moment-timezone-with-data.min.js')
         link(href='/ext/bootstrap/dist/css/bootstrap.min.css',rel='stylesheet')
-        link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600', rel='stylesheet', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600', rel='stylesheet', type='text/css')
         link(href='/stylesheets/style.css', rel='stylesheet')
         block headBelow
     body

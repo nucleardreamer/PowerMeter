@@ -6,12 +6,12 @@ module.exports = function(app, wind, nodes, io) {
 
     app.get('/', function (req, res) {
         res.render('index', {
-            title: 'Power Meter'
+            title: 'Node Hive'
         });
     });
     app.get('/dashboard', function (req, res) {
         res.render('dashboard', {
-            title: 'Power Meter'
+            title: 'Node Hive'
         });
     });
 
