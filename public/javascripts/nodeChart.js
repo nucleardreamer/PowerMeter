@@ -69,8 +69,14 @@ Node.prototype.init = function(){
             }
         },
         tooltip: {
-
-            pointFormat: '{point.x:%e %b %I:%M%p}: {point.y}'
+            shared: false,
+            useHTML: true,
+            headerFormat: '<small>{point.key}</small><table>',
+            pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+            '<td style="text-align: right"><b>{point.y} MW</b></td></tr>',
+            footerFormat: '</table>',
+            valueDecimals: 2,
+            crosshairs: [true, true]
         },
 
         plotOptions: {
