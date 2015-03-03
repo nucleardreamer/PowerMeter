@@ -62,24 +62,6 @@ Node.prototype.init = function(){
             title: {
                 text: 'Date'
             }
-            //ordinal: false,
-            //tickInterval: 10 * 1000
-            //min: moment().startOf('minute').unix() * 1000,
-            //max: moment().endOf('minute').unix() * 1000
-            //tickPositioner: function(min,max){
-            //    //var act = min,
-            //    //    ticks = [];
-            //    //console.log(this);
-            //    //while(act <= max){
-            //    //    ticks.push(act);
-            //    //    act+= this.tickInterval;
-            //    //}
-            //    //this.tickPosition = moment().unix() * 1000;
-            //    //this.min = moment().startOf('minute').unix() * 1000;
-            //    //this.max = moment().endOf('minute').unix() * 1000;
-            //    //return ticks;
-            //    return moment().unix() * 1000
-            //}
         },
         yAxis: {
             title: {

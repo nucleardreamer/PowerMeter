@@ -40,8 +40,14 @@ Wind.prototype.init = function(){
             min: 0
         },
         tooltip: {
-            headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: '{point.x:%e %b %I:%M%p}: {point.y}'
+            shared: true,
+            useHTML: true,
+            headerFormat: '<small>{point.key}</small><table>',
+            pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+            '<td style="text-align: right"><b>{point.y} MW</b></td></tr>',
+            footerFormat: '</table>',
+            valueDecimals: 2,
+            crosshairs: [true, true]
         },
 
         plotOptions: {
@@ -52,10 +58,10 @@ Wind.prototype.init = function(){
             }
         },
         series: [{
-            name: 'Base Power (MW)',
+            name: 'Base Power',
             data: []
         }, {
-            name: 'Wind Power (MW)',
+            name: 'Wind Power',
             data: []
         }]
     })
