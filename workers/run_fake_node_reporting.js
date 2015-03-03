@@ -5,8 +5,8 @@ function getRandomInt(min, max) {
 }
 
 var nodeInterval = function(nodeValue, dataValue){
-    //var serverUrl = "http://localhost:8000/api/node";
-    var serverUrl = "http://power-meter.herokuapp.com/api/node";
+
+    var serverUrl = (process.env.NODE_ENV == 'production') ? "http://power-meter.herokuapp.com/api/node" : "http://localhost:8000/api/node";
 
     // options needed in order to send
     var toSendOptions = {
