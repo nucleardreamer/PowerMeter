@@ -1,3 +1,5 @@
+process.env.TZ = 'America/Los_Angeles';
+
 require('newrelic');
 var event = require('events');
 var ee = new event.EventEmitter();
