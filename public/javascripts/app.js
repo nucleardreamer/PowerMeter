@@ -34,7 +34,9 @@ Highcharts.setOptions({
             nodeChart.updateOneValue(data);
         })
 
-    });
+    }).on('disconnect', function(){
+        console.log('disconnect', arguments)
+    })
 
 })(jQuery);
 
