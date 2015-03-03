@@ -29,6 +29,8 @@ Highcharts.setOptions({
         });
 
         socket.on('nodeValue', function(data){
+            console.log('NODE VALUE')
+            console.log(arguments);
             nodeChart.updateOneValue(data);
         })
 
