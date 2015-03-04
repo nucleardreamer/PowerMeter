@@ -10,7 +10,6 @@ Node.prototype.init = function(){
     _this.chart = new Highcharts.StockChart({
         chart: {
             renderTo: _this.container.replace('#',''),
-            type: 'spline',
             zoomType: 'x'
         },
         legend: {
@@ -101,7 +100,8 @@ Node.prototype.updateChart = function(data){
             });
             _this.chart.addSeries({
                 name: nodeNames[k],
-                data: allValues
+                data: allValues,
+                step: true
             });
         });
 
