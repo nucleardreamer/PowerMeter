@@ -37,7 +37,7 @@ var int = function(){
 
     nodeInterval('0', getRandomInt(10,15));
     nodeInterval('1', getRandomInt(20,35));
-    setTimeout(int, 2000)
+    setTimeout(int, 3000)
 };
 
 int();

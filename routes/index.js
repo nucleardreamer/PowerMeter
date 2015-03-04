@@ -28,6 +28,15 @@ module.exports = function(app, wind, nodes, io) {
             res.send(500);
         }
     });
+    app.get('/api/getExcessWindReadingsAfterTime', function (req, res) {
+        if (wind.ready) {
+            wind.getExcessEventsAfterTime(req.query.time, function (data) {
+                res.json(data);
+            })
+        } else {
+            res.send(500);
+        }
+    });
 
     app.get('/api/getDeficitWindReadings', function (req, res) {
         if (wind.ready) {
