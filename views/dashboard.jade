@@ -4,9 +4,11 @@ block headAbove
     script(src='/socket.io/socket.io.js')
 
 block headBelow
-    script(src='/javascripts/app.js')
+    script(src='/javascripts/top.js')
     script(src='/javascripts/windChart.js')
     script(src='/javascripts/nodeChart.js')
+    script(src='/javascripts/nodes.js')
+    script(src='/javascripts/app.js')
 
 block content
     .disconnected DISCONNECTED FROM SERVER
@@ -34,6 +36,45 @@ block content
         .row
             .col-sm-12.status
                 p home power device report
+        .row
+            .col-sm-3.col-xs-6.node(node-id="0")
+                .cont
+                    .title
+                    .status
+                    .offline OFFLINE
+                    .stats
+                        .arch
+                        .mem
+                        .uptime
+
+            .col-sm-3.col-xs-6.node(node-id="1")
+                .cont
+                    .title
+                    .status
+                    .offline OFFLINE
+                    .stats
+                        .arch
+                            .pretext OS
+                        .mem
+                        .uptime
+            .col-sm-3.col-xs-6.node(node-id="2")
+                .cont
+                    .title
+                    .status
+                    .offline OFFLINE
+                    .stats
+                        .arch
+                        .mem
+                        .uptime
+            .col-sm-3.col-xs-6.node(node-id="3")
+                .cont
+                    .title
+                    .status
+                    .offline OFFLINE
+                    .stats
+                        .arch
+                        .mem
+                        .uptime
         .row
             .col-sm-12
                 div(id="nodeChart")

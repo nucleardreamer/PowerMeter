@@ -78,3 +78,77 @@ a {
   height: auto;
   padding: 10px 20px;
 }
+.node {
+  -webkit-transform: all 1s ease;
+}
+.node.connected .status {
+  background-color: #008400;
+  border: 1px solid #00a200;
+}
+.node.connected .offline {
+  display: none;
+}
+.node.connected .stats {
+  display: block;
+}
+.node.connected .title {
+  color: inherit;
+}
+.node .title {
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 15px;
+  color: #818181;
+}
+.node .stats {
+  display: none;
+  margin: 10px auto;
+  clear: both;
+  width: 170px;
+}
+.node .stats > div {
+  position: relative;
+  padding-left: 65px;
+}
+.node .stats > div:before {
+  position: absolute;
+  text-align: right;
+  left: 0px;
+  color: #686869;
+  width: 60px;
+}
+.node .stats .arch:before {
+  content: 'OS';
+}
+.node .stats .mem:before {
+  content: 'MEM';
+}
+.node .stats .uptime:before {
+  content: 'UPTIME';
+}
+.node .cont {
+  background-color: #2a2a2b;
+  margin-bottom: 10px;
+  padding: 10px;
+  position: relative;
+  min-height: 115px;
+}
+.node .status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 8px;
+  width: 25px;
+  background-color: #a50000;
+  border: 1px solid #ba0000;
+  margin: 0;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+}
+.node .offline {
+  text-align: center;
+  color: #575758;
+  margin: 20px 0px;
+  text-transform: uppercase;
+}

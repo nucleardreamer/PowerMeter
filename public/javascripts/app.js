@@ -1,9 +1,5 @@
 var socket = io.connect();
 
-var charts = {};
-
-var nodeNames = ['Alpha', 'Beta', 'Gamma', 'Delta'];
-
 Highcharts.setOptions({
     global : {
         useUTC : false
@@ -11,6 +7,8 @@ Highcharts.setOptions({
 });
 
 (function($){
+
+    var allNodes = new RealtimeNodes();
 
     socket.on('connection', function (data) {
 
@@ -33,28 +31,39 @@ Highcharts.setOptions({
         var nodeChart = new charts.node('#nodeChart');
 
         socket.emit('getNodeData', function(data){
-            console.log('getNodeData', data);
             nodeChart.updateChart(data);
         });
 
         socket.on('nodeData', function(data){
-            console.log('NODE VALUE');
-            console.log(arguments);
             nodeChart.updateOneValue(data);
         });
 
         socket.on('nodeDataAdded', function(){
-            console.log('NEW NODE ADDED');
             location.reload();
         });
 
+        socket.on('registeredNodes', function(nodes){
+            if(_.size(nodes)){
+                allNodes.update(nodes);
+            }
+        });
+
+        socket.on('node_connect', function(node){
+            allNodes.update([node]);
+        });
+
+        socket.on('node_disconnect', function(node){
+            allNodes.offline(node);
+        });
 
     }).on('disconnect', function(){
         $('.disconnected').addClass('false');
-        console.log('disconnect', arguments)
+
     }).on('reconnect', function(){
         $('.disconnected').removeClass('false');
-        console.log('reconnect', arguments)
-    })
+
+    });
+
+
 
 })(jQuery);
