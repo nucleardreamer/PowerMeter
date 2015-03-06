@@ -1,4 +1,6 @@
-var io = require('socket.io-client')('http://localhost:8000');
+var url = (process.env.NODE_ENV == 'production') ? "http://www.node-hive.io" : "http://localhost:8000";
+
+var io = require('socket.io-client')(url);
 var os = require('os');
 io.on('connect', function(socket){
     console.log('connection');
