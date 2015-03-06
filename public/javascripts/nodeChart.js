@@ -98,6 +98,7 @@ Node.prototype.updateChart = function(data){
             _.map(item.readings, function (read) {
                 allValues.push([read.time, read.data])
             });
+            allValues = _.sortBy(allValues, 'date');
             _this.chart.addSeries({
                 name: nodeNames[k],
                 data: allValues,
