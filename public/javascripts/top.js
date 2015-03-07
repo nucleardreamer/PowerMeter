@@ -16,7 +16,7 @@ function bytesToSize(bytes) {
     return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 };
 
-var nodeNames = ['Honey', 'Bumble', 'Leafcutter', 'Digger'],
+var nodeNames = ['Alpha', 'Beta', 'Gamma', 'Delta'],
     charts = {};
 
 console.log("%c%s", "color: #f3f3f3; background-color: #313134; font-size: 24px", "⬢ NODE-HIVE.IO ⬢");
