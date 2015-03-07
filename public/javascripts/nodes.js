@@ -28,7 +28,7 @@ RealtimeNodes.prototype.init = function(nodes){
             nodeDom.find('.stats')
                 .find('.arch').text(String.format('{0} ({1})', node.stats.os, node.stats.arch)).end()
                 .find('.mem').text(String.format('{0}/{1}', bytesToSize(node.stats.mem.total - node.stats.mem.free), bytesToSize(node.stats.mem.total))).end()
-                .find('.uptime').text(moment.duration(node.stats.uptime, 'milliseconds').humanize())
+                .find('.uptime').text(moment.duration(node.stats.uptime, 'seconds').humanize())
         }
 
     })
