@@ -13,11 +13,11 @@ var server = require('http').Server(app);
 var Wind = require(path.join(__dirname,'lib','wind_scrape'));
 var wind = new Wind();
 
-var Io = require(path.join(__dirname,'lib','io'));
-var io = new Io(server, wind);
-
 var Nodes = require(path.join(__dirname,'lib','nodes'));
 var nodes = new Nodes();
+
+var Io = require(path.join(__dirname,'lib','io'));
+var io = new Io(server, wind, nodes);
 
 var Cron = require(path.join(__dirname,'lib','cron'));
 var cron = new Cron(wind, io, nodes);

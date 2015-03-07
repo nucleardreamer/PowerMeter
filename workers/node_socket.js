@@ -2,10 +2,10 @@
 var os = require('os');
 var socketClient = require('socket.io-client');
 
-var NodeReporter = function(nodeNum){
+var NodeReporter = function(nodeNum, url){
     var _this = this;
 
-    _this.url = (process.env.NODE_ENV == 'production'||true) ? "http://www.node-hive.io" : "http://localhost:8000";
+    _this.url = url;
 
     _this.nodeNum = nodeNum;
 
