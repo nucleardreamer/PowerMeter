@@ -6,7 +6,7 @@ function getRandomInt(min, max) {
 
 var nodeInterval = function(nodeValue, dataValue){
 
-    var serverUrl = (process.env.NODE_ENV == 'production') ? "http://power-meter.herokuapp.com/api/node" : "http://localhost:8000/api/node";
+    var serverUrl = (process.env.NODE_ENV == 'production'||true) ? "http://power-meter.herokuapp.com/api/node" : "http://localhost:8000/api/node";
 
     // options needed in order to send
     var toSendOptions = {
@@ -36,11 +36,14 @@ var nodeInterval = function(nodeValue, dataValue){
 var int = function(){
 
     nodeInterval('0', getRandomInt(10,15));
-    nodeInterval('1', getRandomInt(20,35));
     setTimeout(int, 3000)
 };
 
 int();
+
+var Reporter = require('./node_socket');
+
+var node_0 = new Reporter(0);
 
 //var int = setInterval(function(){
 //
