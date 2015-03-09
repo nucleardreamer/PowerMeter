@@ -30,16 +30,20 @@ Highcharts.setOptions({
 
         var nodeChart = new charts.node('#nodeChart');
 
-        socket.emit('getNodeData', function(data){
-            nodeChart.updateChart(data);
-        });
+        var getNodeChartData = function(){
+            socket.emit('getNodeData', function(data){
+                nodeChart.updateChart(data);
+            });
+        };
+
+        getNodeChartData();
 
         socket.on('nodeData', function(data){
             nodeChart.updateOneValue(data);
         });
 
         socket.on('nodeDataAdded', function(){
-            location.reload();
+            getNodeChartData();
         });
 
         socket.on('registeredNodes', function(nodes){

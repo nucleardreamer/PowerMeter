@@ -103,9 +103,10 @@ Node.prototype.updateChart = function(data){
                 name: nodeNames[k],
                 data: allValues,
                 step: true
-            });
-        });
+            }, true);
 
+        });
+        _this.chart.redraw();
     }
 };
 
@@ -115,10 +116,10 @@ Node.prototype.updateOneValue = function(data){
         var nodeNum = parseInt(data.node);
         _.forEach(_this.chart.series, function(series, k){
             if(series.name == nodeNames[nodeNum]){
-
-                _this.chart.series[k].addPoint([data.reading.time, parseFloat(data.reading.data)])
+                _this.chart.series[k].addPoint([data.reading.time, parseFloat(data.reading.data)], false)
             }
-        })
+        });
+        _this.chart.redraw();
     }
 
 };

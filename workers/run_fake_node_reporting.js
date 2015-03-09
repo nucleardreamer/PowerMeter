@@ -1,3 +1,11 @@
+var program = require('commander');
+
+program
+    .version('0.0.1')
+    .option('-n --node [node]', 'Node Number [node]', 0);
+
+program.parse(process.argv);
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -6,7 +14,7 @@ var serverUrl = (process.env.NODE_ENV == 'production' || false) ? "http://power-
 
 var Reporter = require('./node_socket');
 
-var reporter = new Reporter(0, serverUrl);
+var reporter = new Reporter(program.node, serverUrl);
 
 var io = reporter.io;
 
@@ -25,7 +33,7 @@ var dataRun = function(nodeValue, dataValue){
 };
 
 var int = function(){
-    dataRun('0', getRandomInt(10,15));
+    dataRun(program.node, getRandomInt(10,15));
     setTimeout(int, 1000)
 };
 
