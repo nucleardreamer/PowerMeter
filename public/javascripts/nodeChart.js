@@ -72,7 +72,7 @@ Node.prototype.init = function(){
             useHTML: true,
             headerFormat: '<small>{point.key}</small><table>',
             pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
-            '<td style="text-align: right"><b>{point.y} Amps</b></td></tr>',
+            '<td style="text-align: right"><b>{point.y} Watts</b></td></tr>',
             footerFormat: '</table>',
             valueDecimals: 2,
             crosshairs: [true, true]
