@@ -8,7 +8,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     _db = require(path.join(__dirname, 'lib', 'mongo'));
 
-var mongo = new _db(function(started){
+var mongo = new _db(process.env.MONGOURL, function(started){
     console.log(started ? 'mongo good' : 'mongo bad');
 });
 
