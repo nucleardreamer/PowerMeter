@@ -19,7 +19,7 @@ var Wind = require(path.join(__dirname,'lib','wind_scrape'));
 var wind = new Wind();
 
 var Nodes = require(path.join(__dirname,'lib','nodes'));
-var nodes = new Nodes(mongo);
+var nodes = new Nodes(mongo, wind);
 
 var Io = require(path.join(__dirname,'lib','io'));
 var io = new Io(server, wind, nodes);
