@@ -5,7 +5,12 @@ var express = require('express'),
     path = require('path'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    _db = require(path.join(__dirname, 'lib', 'mongo'));
+
+var mongo = new _db(function(started){
+    console.log(started ? 'mongo good' : 'mongo bad');
+});
 
 var app = express();
 var server = require('http').Server(app);
@@ -14,7 +19,7 @@ var Wind = require(path.join(__dirname,'lib','wind_scrape'));
 var wind = new Wind();
 
 var Nodes = require(path.join(__dirname,'lib','nodes'));
-var nodes = new Nodes();
+var nodes = new Nodes(mongo);
 
 var Io = require(path.join(__dirname,'lib','io'));
 var io = new Io(server, wind, nodes);

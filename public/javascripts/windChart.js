@@ -76,7 +76,7 @@ Wind.prototype.init = function(){
             }
         },
         series: [{
-            name: 'Base Power',
+            name: 'Forecasted Power',
             type: 'spline',
             yAxis: 0,
             tooltip: {
@@ -84,7 +84,7 @@ Wind.prototype.init = function(){
             },
             data: []
         }, {
-            name: 'Wind Power',
+            name: 'Generated Power',
             type: 'spline',
             yAxis: 0,
             tooltip: {

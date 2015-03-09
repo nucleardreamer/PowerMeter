@@ -2,7 +2,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var serverUrl = (process.env.NODE_ENV == 'production' || true) ? "http://power-meter.herokuapp.com" : "http://localhost:8000";
+var serverUrl = (process.env.NODE_ENV == 'production' || false) ? "http://power-meter.herokuapp.com" : "http://localhost:8000";
 
 var Reporter = require('./node_socket');
 
