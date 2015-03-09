@@ -72,7 +72,7 @@ Node.prototype.init = function(){
             useHTML: true,
             headerFormat: '<small>{point.key}</small><table>',
             pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
-            '<td style="text-align: right"><b>{point.y} MW</b></td></tr>',
+            '<td style="text-align: right"><b>{point.y} Amps</b></td></tr>',
             footerFormat: '</table>',
             valueDecimals: 2,
             crosshairs: [true, true]
@@ -96,7 +96,7 @@ Node.prototype.updateChart = function(data){
         _.forEach(data, function (item, k) {
             var allValues = [];
             _.map(item.readings, function (read) {
-                allValues.push([read.time, read.data])
+                allValues.push([read.time, parseFloat(read.data)])
             });
             allValues = _.sortBy(allValues, 'date');
             _this.chart.addSeries({
@@ -116,7 +116,7 @@ Node.prototype.updateOneValue = function(data){
         _.forEach(_this.chart.series, function(series, k){
             if(series.name == nodeNames[nodeNum]){
 
-                _this.chart.series[k].addPoint([data.reading.time, data.reading.data])
+                _this.chart.series[k].addPoint([data.reading.time, parseFloat(data.reading.data)])
             }
         })
     }
