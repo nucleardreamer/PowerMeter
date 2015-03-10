@@ -4,6 +4,7 @@ block headAbove
     script(src='/socket.io/socket.io.js')
 
 block headBelow
+    script(src='/javascripts/maps.js')
     script(src='/javascripts/top.js')
     script(src='/javascripts/windChart.js')
     script(src='/javascripts/nodeChart.js')
@@ -78,3 +79,13 @@ block content
         .row
             .col-sm-12
                 div(id="nodeChart")
+    .container
+        .row
+            .col-sm-12.status
+                p WIND POWER LOCATIONS
+    .map
+        script(src="https://maps.googleapis.com/maps/api/js?sensor=false")
+        script.
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+        #map_canvas
